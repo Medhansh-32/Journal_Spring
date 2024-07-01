@@ -1,5 +1,4 @@
 package com.edigest.journalApp.controller;
-import java.time.LocalDateTime;
 import java.util.*;
 
 import org.bson.types.ObjectId;
@@ -33,7 +32,6 @@ public class JournalEntryControllerV2 {
     @PostMapping
     public ResponseEntity<JournalEntry> createEntry(@RequestBody JournalEntry myEntry){
       try{ 
-         myEntry.setDate(LocalDateTime.now());
         journalEntryService.saveEntry(myEntry);
         return new ResponseEntity<>(myEntry,HttpStatus.OK);
     }catch(Exception e){

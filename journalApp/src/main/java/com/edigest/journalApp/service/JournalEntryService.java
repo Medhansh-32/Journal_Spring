@@ -1,6 +1,7 @@
 package com.edigest.journalApp.service;
 import com.edigest.journalApp.repository.JournalEntryRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ public class JournalEntryService {
    private JournalEntryRepository journalEntryRepository; 
 
    public void saveEntry(JournalEntry journalEntry){
+    journalEntry.setDate(LocalDateTime.now());
     journalEntryRepository.save(journalEntry);
    }
 
