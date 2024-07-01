@@ -23,8 +23,13 @@ public class UserContoller {
     }
 
     @PostMapping
-    public void createUser(@RequestBody User user){
-        userService.saveUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user){
+        try{
+           User temp= userService.saveUser(user);
+           return new ResponseEntity<>(temp,HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
     @PutMapping("/{userName}")
     public ResponseEntity<?> updateUser(@RequestBody User user,@PathVariable String userName){
