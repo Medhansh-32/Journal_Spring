@@ -8,9 +8,11 @@ import com.edigest.journalApp.entity.JournalEntry;
 import com.mongodb.lang.NonNull;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Document
 @Data
+@NoArgsConstructor
 public class JournalEntry {
      
     @Id
