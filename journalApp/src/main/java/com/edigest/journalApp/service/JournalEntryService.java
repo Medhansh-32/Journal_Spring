@@ -3,9 +3,14 @@ import com.edigest.journalApp.repository.JournalEntryRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
+import javax.management.RuntimeErrorException;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.edigest.journalApp.entity.*;
 
 @Component
@@ -17,12 +22,18 @@ public class JournalEntryService {
    @Autowired //dependency Injection
    private JournalEntryRepository journalEntryRepository; 
 
+   @Transactional
    public void saveEntry(JournalEntry journalEntry,String userName){
-    User user = userService.findByUserName(userName); 
-    journalEntry.setDate(LocalDateTime.now());
-    JournalEntry saved=journalEntryRepository.save(journalEntry);
-    user.getJournalEntries().add(saved);
-    userService.saveUser(user);
+      try {
+         User user = userService.findByUserName(userName); 
+         journalEntry.setDate(LocalDateTime.now());
+         JournalEntry saved=journalEntryRepository.save(journalEntry);
+         user.getJournalEntries().add(saved);
+         userService.saveUser(user);
+              
+      } catch (Exception e) {
+         throw new RuntimeException("Error occurred while saving entry",e);
+      }
    }
    public void saveEntry(JournalEntry journalEntry){
     journalEntryRepository.save(journalEntry);
