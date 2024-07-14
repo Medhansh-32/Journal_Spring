@@ -13,4 +13,5 @@ public interface UserRepository extends MongoRepository<User,ObjectId> {
 
 // Spring Data MongoDB allows you to define custom query methods simply by declaring them in your repository interface. These methods follow a specific naming convention, and Spring Data MongoDB translates them into the corresponding MongoDB queries.
     User findByUserName(String userName);
+    User deleteByUserName(String username);
 }

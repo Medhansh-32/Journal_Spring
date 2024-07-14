@@ -1,17 +1,16 @@
 package com.edigest.journalApp.service;
-import com.edigest.journalApp.repository.JournalEntryRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
-
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.edigest.journalApp.entity.*;
+import com.edigest.journalApp.entity.JournalEntry;
+import com.edigest.journalApp.entity.User;
+import com.edigest.journalApp.repository.JournalEntryRepository;
 
 @Component
 public class JournalEntryService {
@@ -32,7 +31,7 @@ public class JournalEntryService {
          userService.saveUser(user);
               
       } catch (Exception e) {
-         throw new RuntimeException("Error occurred while saving entry",e);
+        System.out.println(e);
       }
    }
    public void saveEntry(JournalEntry journalEntry){
