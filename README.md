@@ -44,12 +44,31 @@ Execute the command :
 
     
 <h2>Access the application</h2>
-Open any API platform <br>  
+Open any API platform.<br> <br>  
 The application will be available at http://localhost:8080.
 
 <h2>API Endpoints</h2>
-
+<h4>Demo for JSON Body</h4>
+<h5>User :</h5>
+<pre>
+<code>
+{
+    "userName" : "John Doe",
+    "password" : "********"
+} 
+</code>
+</pre>
+<h5>Journal Entry :</h5>
+<pre>
+<code>
+{
+    "title" : "Here Comes The Title",
+    "content" : "Here is the content"
+}
+</code>
+</pre>
 <h3>Public Endpoints</h3>
+
 
 <strong>Health Check</strong>
 <pre>
