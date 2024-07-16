@@ -27,6 +27,12 @@ public User saveEntry(User user){
   userRepository.save(user);
   return user;
 }
+public User saveAdmin(User user){
+  user.setPassword(passwordEncoder.encode((user.getPassword())));
+  user.setRoles(Arrays.asList("USER","ADMIN"));
+  userRepository.save(user);
+  return user;
+}
 
     public User saveUser(User user){
      return userRepository.save(user);

@@ -24,11 +24,7 @@ public class PublicController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<User> getAllUsers(){
-       return userService.getAll();
-    }
-
+   
     @PostMapping("/create-user")
     public ResponseEntity<User> createUser(@RequestBody User user){
         try{
