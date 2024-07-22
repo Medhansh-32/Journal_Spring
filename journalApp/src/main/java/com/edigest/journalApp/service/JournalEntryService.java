@@ -1,9 +1,12 @@
 package com.edigest.journalApp.service;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +22,9 @@ public class JournalEntryService {
    private UserService userService;
 
    @Autowired //dependency Injection
-   private JournalEntryRepository journalEntryRepository; 
+   private JournalEntryRepository journalEntryRepository;
+
+
 
    @Transactional
    public void saveEntry(JournalEntry journalEntry,String userName){
@@ -64,5 +69,6 @@ public class JournalEntryService {
       
       }
    return removed;
+
    }
 }

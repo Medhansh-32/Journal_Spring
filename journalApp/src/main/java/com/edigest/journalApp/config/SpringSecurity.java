@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import com.edigest.journalApp.service.UserDetailsServiceImpl;
 
+import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
@@ -24,6 +25,9 @@ public class SpringSecurity {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
+
+
+
 
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
@@ -36,7 +40,8 @@ public class SpringSecurity {
                         .requestMatchers("/journal/**","/user/**").authenticated()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll())
-                .httpBasic(Customizer.withDefaults())
+                .formLogin(withDefaults())
+                .httpBasic(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }

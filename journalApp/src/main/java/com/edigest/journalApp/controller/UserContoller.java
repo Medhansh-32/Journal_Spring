@@ -18,6 +18,7 @@ import com.edigest.journalApp.service.UserService;
 @RestController
 @RequestMapping("/user")
 public class UserContoller {
+
     @Autowired
     private UserService userService;
 
