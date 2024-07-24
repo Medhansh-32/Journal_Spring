@@ -21,6 +21,7 @@ public class PublicController {
     public String healthCheck(){
         return "ok";
     }
+
     @Autowired
     private UserService userService;
 

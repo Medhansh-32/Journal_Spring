@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,7 @@ import com.edigest.journalApp.entity.User;
 import com.edigest.journalApp.repository.JournalEntryRepository;
 
 @Component
+@Slf4j
 public class JournalEntryService {
     
    @Autowired
@@ -36,7 +39,7 @@ public class JournalEntryService {
          userService.saveUser(user);
               
       } catch (Exception e) {
-        System.out.println(e);
+         log.error(e.getMessage());
       }
    }
    public void saveEntry(JournalEntry journalEntry){
