@@ -1,6 +1,7 @@
 package com.edigest.journalApp.controller;
 
 import com.edigest.journalApp.apiresponse.WeatherResponse;
+import com.edigest.journalApp.cache.AppCache;
 import com.edigest.journalApp.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,7 @@ public class UserContoller {
 
     @Autowired
     private WeatherService weatherService;
+
 
 
     @PutMapping
