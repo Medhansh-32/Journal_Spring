@@ -38,9 +38,11 @@ public class SpringSecurity {
 
         return http.authorizeHttpRequests(request -> request
                         .requestMatchers("/journal/**","/user/**").authenticated()
+                        .requestMatchers("/signin").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll())
-                .formLogin(withDefaults())
+                .formLogin(formlogin->formlogin.loginPage("/signin")
+                        .loginProcessingUrl("/login").permitAll())
                 .httpBasic(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .build();
