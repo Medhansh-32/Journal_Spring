@@ -1,7 +1,7 @@
 package com.edigest.journalApp.enums;
 
 
-import lombok.Getter;
+
 
 
 
