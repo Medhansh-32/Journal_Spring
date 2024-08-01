@@ -1,4 +1,4 @@
-package com.edigest.journalApp.config; 
+package com.edigest.journalApp.config;
 
 
 import com.edigest.journalApp.filter.JwtFilter;
@@ -44,7 +44,7 @@ public class SpringSecurity {
                         .requestMatchers("/journal/**","/user/**").authenticated()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll())
-                .formLogin(withDefaults())
+               // .formLogin(withDefaults())
                // .httpBasic(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
