@@ -81,6 +81,7 @@ public class JournalEntryControllerV2 {
             }
         }
 
+
         @PutMapping("id/{myId}")
         public ResponseEntity<?> updateJournalById(@PathVariable ObjectId myId, @RequestBody JournalEntry newEntry) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

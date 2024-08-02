@@ -46,7 +46,6 @@ public class JwtUtil {
         return extractAllClaims(token).getExpiration().before(new Date());
     }
     public boolean validateToken(String token) {
-        final String extractUsername = extractUsername(token);
         return (!isTokenExpired(token));
     }
 
@@ -54,3 +53,14 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 }
+/*Token Generation:
+
+    generateToken and createToken methods create a JWT with claims and a subject.
+    createToken sets claims, subject, header parameters, issue date, expiration date, and signing key.
+
+Token Parsing and Validation:
+
+    extractUsername extracts the username from the token.
+    extractAllClaims parses the token to get all claims.
+    isTokenExpired checks if the token is expired.
+    validateToken validates the token (currently only checking if not expired).*/

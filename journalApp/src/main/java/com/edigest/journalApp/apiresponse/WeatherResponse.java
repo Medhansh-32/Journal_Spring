@@ -10,8 +10,8 @@ public class WeatherResponse {
 
     @JsonProperty("current")
     private Current current;
-    @JsonProperty("condition")
-    private Condition condition;
+//    @JsonProperty("condition")
+//    private Condition condition;
 
     @Getter
     @Setter

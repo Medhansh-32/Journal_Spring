@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import com.edigest.journalApp.entity.User;
 import com.edigest.journalApp.repository.UserRepository;
 import com.edigest.journalApp.service.UserService;
+import org.springframework.web.multipart.MultipartFile;
 
- 
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -43,7 +44,7 @@ public class UserController {
         }
     
     @DeleteMapping
-    public ResponseEntity<?> deleteByUsername(){
+    public ResponseEntity<?> deleteByUsername(  ){
         org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
         userRepository.deleteByUserName(userName);
@@ -55,6 +56,7 @@ public class UserController {
         WeatherResponse weatherResponse=weatherService.getWeather("Mumbai");
 
     if(weatherResponse !=null){
+
             String greeting="hi "+authentication.getName()+" Todays Weather is "+weatherResponse.getCurrent().getCondition().getText();
             return new ResponseEntity<>(greeting,HttpStatus.OK);
         }else{

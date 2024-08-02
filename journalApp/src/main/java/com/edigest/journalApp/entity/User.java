@@ -1,6 +1,7 @@
 package com.edigest.journalApp.entity;
 import lombok.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class User {
 
     @Id
     private ObjectId id;
+    private JournalEntry journalEntry;
     @Indexed(unique = true)
     @NonNull
     private String userName;

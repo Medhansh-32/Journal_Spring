@@ -60,3 +60,18 @@ public class SpringSecurity {
         return new BCryptPasswordEncoder();
     }
 }
+/*Global Authentication Configuration:
+
+    The configureGlobal method configures the AuthenticationManagerBuilder to use the custom UserDetailsServiceImpl and BCryptPasswordEncoder for password encoding.
+
+Security Filter Chain:
+
+    securityFilterChain method configures the HTTP security:
+        Authenticated access to /journal/** and /user/**.
+        Role-based access to /admin/** (only accessible by users with the ADMIN role).
+        Disables CSRF protection.
+        Adds the custom JwtFilter before UsernamePasswordAuthenticationFilter.
+
+Beans:
+
+    Defines beans for AuthenticationManager and PasswordEncoder.*/

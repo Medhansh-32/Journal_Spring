@@ -48,3 +48,35 @@ public class JwtFilter extends OncePerRequestFilter {
 
 
 }
+/*    Request Interception:
+        The filter intercepts each request (doFilterInternal method).
+
+    Extract JWT:
+        Checks for an Authorization header starting with Bearer and extracts the JWT.
+
+    Validate JWT:
+        Extracts the username from the JWT and validates the token.
+
+    Set Authentication:
+        If the token is valid and the user is not already authenticated, it loads the user details and sets the authentication in the SecurityContextHolder.
+
+    Add Header:
+        Adds a custom header to the response (e.g., for testing or tracing).
+
+Summary of How Authentication Happens
+
+    Request Interception:
+        The JwtFilter intercepts incoming HTTP requests.
+
+    Extract and Validate JWT:
+        It extracts the JWT from the Authorization header.
+        Validates the JWT using JwtUtil.
+
+    Load User Details:
+        If the JWT is valid, it loads user details from the database using UserDetailsServiceImpl.
+
+    Set Authentication:
+        It creates an Authentication object and sets it in the SecurityContextHolder, establishing the user's authentication context for the current request.
+
+    Proceed with Filter Chain:
+        The request continues through the filter chain with the authentication context set.*/
